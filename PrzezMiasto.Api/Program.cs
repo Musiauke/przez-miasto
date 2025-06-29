@@ -1,8 +1,20 @@
+using Microsoft.EntityFrameworkCore;
+using PrzezMiasto.Api.Data;
+
+
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
+
+// Add services to the container.
 builder.Services.AddOpenApi();
+builder.Services.AddEndpointsApiExplorer();
+
+// SQLite data base configuration
+builder.Services.AddDbContext<ApplicationDbContext>(Options =>
+    Options.UseSqlite("Data Source=miejsca.db"));
 
 var app = builder.Build();
 
